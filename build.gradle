@@ -17,9 +17,14 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+
+	implementation 'mysql:mysql-connector-java:8.0.29'
+
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.amqp:spring-rabbit-test'
 	testImplementation 'org.springframework.security:spring-security-test'
+
+	testImplementation 'org.spockframework:spock-core:2.1-groovy-3.0'
 }
 
 tasks.named('test') {

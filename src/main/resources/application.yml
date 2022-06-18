@@ -1,0 +1,18 @@
+spring:
+  profiles:
+    acitve: ${SPRING_PROFILES_ACTIVE}
+  rabbitmq:
+    username: ${SPRING_RABBITMQ_USERNAME}
+    password: ${SPRING_RABBITMQ_PASSWORD}
+    queues:
+      baseball-player: players-stats
+    exchanges:
+      baseball: baseball-stats
+    bindings:
+      baseball-player-stats: baseball-player-stats
+  datasoruce:
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
+    url: ${SPRING_DATSOURCE_URL}
+server:
+  port: 8081

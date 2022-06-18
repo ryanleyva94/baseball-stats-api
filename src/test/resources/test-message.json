@@ -1,0 +1,23 @@
+{
+	"gameNumber": 1,
+	"players": [
+		{
+			"playerId": "123123",
+			"playerName": "Doe, John",
+			"atBats": 5,
+			"hits": 2,
+			"hitsByPitch": 0,
+			"walks": 0,
+			"sacrificeFlies": 1
+		},
+		{
+			"playerId": "123456",
+			"playerName": "Smith, George",
+			"atBats": 4,
+			"hits": 1,
+			"hitsByPitch": 0,
+			"walks": 1,
+			"sacrificeFlies": 0
+		}
+	]
+}
