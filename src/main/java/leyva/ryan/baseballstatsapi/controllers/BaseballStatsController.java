@@ -1,6 +1,8 @@
 package leyva.ryan.baseballstatsapi.controllers;
 
-import leyva.ryan.baseballstatsapi.daos.BaseballStatsDao;
+import leyva.ryan.baseballstatsapi.model.PlayerBySeason;
+import leyva.ryan.baseballstatsapi.services.GameReadingService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -9,17 +11,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class BaseballStatsController
 {
-    private final BaseballStatsDao baseballStatsDao;
+    private final GameReadingService gameReadingService;
 
-    public BaseballStatsController(BaseballStatsDao baseballStatsDao)
+    public BaseballStatsController(GameReadingService gameReadingService)
     {
-        this.baseballStatsDao = baseballStatsDao;
+        this.gameReadingService = gameReadingService;
     }
 
     @GetMapping("/statsByPlayer/playerID/{playerID}")
-    public ResponseEntity<String> getStatsByPlayer(@PathVariable("playerID") String playerID)
+    public ResponseEntity<PlayerBySeason> getStatsByPlayer(@PathVariable("playerID") String playerID)
     {
-        baseballStatsDao.readStatsByPlayer(playerID);
-        return ResponseEntity.ok("hello");
+        return new ResponseEntity<>(gameReadingService.getSeasonStatsByPlayer(playerID), HttpStatus.OK);
     }
 }

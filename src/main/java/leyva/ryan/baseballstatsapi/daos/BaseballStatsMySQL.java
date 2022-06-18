@@ -1,9 +1,12 @@
 package leyva.ryan.baseballstatsapi.daos;
 
+import leyva.ryan.baseballstatsapi.daos.mappers.PlayerDataMapper;
 import leyva.ryan.baseballstatsapi.model.Player;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.JdbcTemplate;
+
+import java.util.List;
 
 public class BaseballStatsMySQL implements BaseballStatsDao
 {
@@ -17,9 +20,13 @@ public class BaseballStatsMySQL implements BaseballStatsDao
     }
 
     @Override
-    public void readStatsByPlayer(String playerID)
+    public List<Player> readStatsByPlayer(String playerID)
     {
-        System.out.println(jdbcTemplate.queryForObject("SELECT COUNT(*) FROM BASEBALL_STATS", Integer.class));
+        String readSql = "SELECT PLAYER_NAME, AT_BATS, HITS, HITS_BY_PITCH, WALKS, SAC_FLIES " +
+                "FROM BASEBALL_STATS " +
+                "WHERE PLAYER_ID = ?;";
+
+        return jdbcTemplate.query(readSql, new PlayerDataMapper(), playerID);
     }
 
     @Override
